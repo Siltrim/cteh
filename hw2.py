@@ -26,3 +26,4 @@ for line in questions:
 print('{} you have {} correct answers'.format(name, correct))
 output = name + ' ' + str(correct)+'\r\n'
 results.write(output)
+results.close()
