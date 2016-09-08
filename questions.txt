@@ -1,0 +1,5 @@
+2 * 2 =;4
+3,14 is integer or float?; float
+How many bytes use one symbol in UTF-16?;2
+Which loop isn't for python: for, foreach or while?;foreach
+Answer to the Ultimate Question of Life, The Universe, and Everything;42
