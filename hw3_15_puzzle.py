@@ -4,6 +4,7 @@
 # https://docs.python.org/3/library/random.html#random.shuffle
 __author__ = 'gia_sebua'
 import random
+import sys
 
 
 # Empty tile, there's only one empty cell on a field:
@@ -39,6 +40,7 @@ def print_field(field):
     for i in range(0,16,4):
         print(field[i:i+4])
 
+
 def is_game_finished(field):
     """
     This method checks if the game is finished.
@@ -47,7 +49,8 @@ def is_game_finished(field):
     """
     if field == [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,EMPTY_MARK]:
         return True
-
+    else:
+        return False
 
 
 def perform_move(field, key):
@@ -60,10 +63,11 @@ def perform_move(field, key):
     """
     position = field.index(EMPTY_MARK)
     move = MOVES[key]
-    if ((key == 'w' and position <= 3) or (key == 's' and position >= 12) or (key == 'a' and position <= 0) or (key == 'd' and position >=15)):
-        print('you can\'t move')
+    if ((key == 'w' and position <= 3) or (key == 's' and position >= 12) or (key == 'a' and (position % 4) == 0) or (key == 'd' and (position % 4) == 3)):
+        print('you can\'t move out of borders')
     else:
-        field.index(EMPTY_MARK) == position + move
+        field[position], field[position + move] = field[position + move], field[position]
+    return field
 
 
 def handle_user_input():
@@ -75,7 +79,10 @@ def handle_user_input():
         'd' - right
     :return: <str> current move.
     """
-    pass
+    move = input('make a move (w,s,a,d):  ')
+    while move not in MOVES.keys():
+        move = input('make a move (w,s,a,d):  ')
+    return move
 
 
 def main():
@@ -84,8 +91,27 @@ def main():
     It also calls other methods.
     :return: None
     """
-    start_field = shuffle_field()
-    print_field(start_field)
+    field = shuffle_field()
+    turns = 0
+    while not is_game_finished(field):
+        try:
+            print_field(field)
+            move = handle_user_input()
+            field = perform_move(field, move)
+        except KeyboardInterrupt:
+"""Это исключение не отрабатывается, при нажатии в консоли ctrl+c пишет
+Traceback (most recent call last):
+ File "hw3_15_puzzle.py", line 116, in <module>
+ тут пишут что KeyboardInterrupt не всегда верно отрабатывает,
+ но решить эту проблему не получилось
+ http://stackoverflow.com/questions/4606942/why-cant-i-handle-a-keyboardinterrupt-in-python
+"""
+            print('Shutting down')
+            sys.exit()
+    else:
+        print('You win! Yoy made {} turns'.format(turns))
+
+
 
 
 if __name__ == '__main__':
