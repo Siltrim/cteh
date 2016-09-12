@@ -64,9 +64,9 @@ def perform_move(field, key):
     position = field.index(EMPTY_MARK)
     move = MOVES[key]
     if ((key == 'w' and position <= 3) or (key == 's' and position >= 12) or (key == 'a' and (position % 4) == 0) or (key == 'd' and (position % 4) == 3)):
-        print('you can\'t move out of borders')
-    else:
-        field[position], field[position + move] = field[position + move], field[position]
+        raise IndexError('you can\'t move out of borders')
+
+    field[position], field[position + move] = field[position + move], field[position]
     return field
 
 
@@ -98,14 +98,17 @@ def main():
             print_field(field)
             move = handle_user_input()
             field = perform_move(field, move)
+        except IndexError as ex:
+            print(ex)
         except KeyboardInterrupt:
-"""Это исключение не отрабатывается, при нажатии в консоли ctrl+c пишет
-Traceback (most recent call last):
- File "hw3_15_puzzle.py", line 116, in <module>
- тут пишут что KeyboardInterrupt не всегда верно отрабатывает,
- но решить эту проблему не получилось
- http://stackoverflow.com/questions/4606942/why-cant-i-handle-a-keyboardinterrupt-in-python
-"""
+            """
+    Это исключение не отрабатывается, при нажатии в консоли ctrl+c пишет
+    Traceback (most recent call last):
+    File hw3_15_puzzle.py, line 124, in <module>
+    тут пишут что KeyboardInterrupt не всегда верно отрабатывает,
+    но решить эту проблему не получилось
+    http://stackoverflow.com/questions/4606942/why-cant-i-handle-a-keyboardinterrupt-in-python
+            """
             print('Shutting down')
             sys.exit()
     else:
