@@ -42,7 +42,6 @@ def shuffle_field():
         random.shuffle(field)
         puzzle = 0 #вычисляем четность расклада
         for i in field:
-            print('puzzle', puzzle)
             if i == EMPTY_MARK:
                 puzzle += field.index(i)//4 + 1
             else:
