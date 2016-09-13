@@ -83,7 +83,10 @@ def perform_move(field, key):
     """
     position = field.index(EMPTY_MARK)
     move = MOVES[key]
-    if ((key == 'w' and position <= 3) or (key == 's' and position >= 12) or (key == 'a' and (position % 4) == 0) or (key == 'd' and (position % 4) == 3)):
+    if ((key == 'w' and position <= 3) or
+        (key == 's' and position >= 12) or
+        (key == 'a' and (position % 4) == 0) or
+        (key == 'd' and (position % 4) == 3)):
         raise IndexError('you can\'t move out of borders')
 
     field[position], field[position + move] = field[position + move], field[position]
