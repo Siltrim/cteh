@@ -17,6 +17,7 @@ from models import (
     BaseItem,
     ToDoItem,
     ToBuyItem,
+    ToReadItem
 )
 from utils import get_input_function
 
@@ -80,6 +81,7 @@ class NewCommand(BaseCommand):
         classes = {
             'ToDoItem': ToDoItem,
             'ToBuyItem': ToBuyItem,
+            'ToReadItem': ToReadItem
         }
         return dict(classes)
 
