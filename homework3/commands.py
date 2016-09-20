@@ -124,4 +124,25 @@ class ExitCommand(BaseCommand):
         raise UserExitException('See you next time!')
 
 class DoneCommand(BaseCommand):
-    pass
+    @staticmethod
+    def label():
+        return 'done'
+
+    def perform(self, objects, *args, **kwargs):
+        if len(objects) == 0:
+            print('Nothing to done.')
+            return
+
+        for index, obj in enumerate(objects):
+            print('{}: {}'.format(index, str(obj)))
+
+        input_function = get_input_function()
+        while True:
+            try:
+                selection = int(input_function('input number: '))
+                objects[selection].done = True
+                break
+            except IndexError:
+                print('Bad input, try again.')
+            except ValueError:
+                print('Bad input, try again.')
