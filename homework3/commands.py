@@ -146,3 +146,27 @@ class DoneCommand(BaseCommand):
                 print('Bad input, try again.')
             except ValueError:
                 print('Bad input, try again.')
+
+class UndoneCommand(BaseCommand):
+    @staticmethod
+    def label():
+        return 'undone'
+
+    def perform(self, objects, *args, **kwargs):
+        if len(objects) == 0:
+            print('Nothing to undone.')
+            return
+
+        for index, obj in enumerate(objects):
+            print('{}: {}'.format(index, str(obj)))
+
+        input_function = get_input_function()
+        while True:
+            try:
+                selection = int(input_function('input number: '))
+                objects[selection].done = False
+                break
+            except IndexError:
+                print('Bad input, try again.')
+            except ValueError:
+                print('Bad input, try again.')
