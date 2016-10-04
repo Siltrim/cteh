@@ -9,7 +9,7 @@ __author__ = 'gia_sebua'
 class Storage(object):
     items = None
     _obj = None
-    json_file = 'data.json'
+    json_file = 'database.json'
 
     @classmethod
     def __new__(cls, *args, **kwargs):
