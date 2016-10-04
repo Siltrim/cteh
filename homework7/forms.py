@@ -3,7 +3,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, validators, ValidationError
 
-__author__ = 'sobolevn'
+__author__ = 'gia_sebua'
 
 
 class BlogPostForm(FlaskForm):
