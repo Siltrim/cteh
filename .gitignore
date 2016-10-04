@@ -1,5 +1,8 @@
 __pycache__/*
 /__pycache__/*
 /homework3/__pycache__/*
+<<<<<<< HEAD
 .idea/
 *.pyc
+=======
+>>>>>>> 513e1c0ac0ac5511afb4b43668dca81fa4c65ae9

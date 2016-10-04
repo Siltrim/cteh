@@ -66,6 +66,7 @@ def perform_command(command):
 
     try:
         command_class = routes[command]
+        print(command_class)
         command_inst = command_class()
 
         storage = Storage()
@@ -98,6 +99,7 @@ def main():
 
     while True:
         try:
+            print(get_routes())
             command = parse_user_input()
             perform_command(command)
         except UserExitException:
