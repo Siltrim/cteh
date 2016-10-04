@@ -49,7 +49,8 @@ def get_routes():
         NewCommand.label(): NewCommand,
         ExitCommand.label(): ExitCommand,
         DoneCommand.label(): DoneCommand,
-        UndoneCommand.label(): UndoneCommand
+        UndoneCommand.label(): UndoneCommand,
+        SaveCommand.label(): SaveCommand
     }
 
 

@@ -170,3 +170,10 @@ class UndoneCommand(BaseCommand):
                 print('Bad input, try again.')
             except ValueError:
                 print('Bad input, try again.')
+
+class SaveCommand(BaseCommand):
+    @staticmethod
+    def label():
+        return 'save'
+
+    
