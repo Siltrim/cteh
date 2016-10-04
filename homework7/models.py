@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import datetime, json
+import datetime
+import json
 
 __author__ = 'gia_sebua'
 
@@ -36,6 +37,6 @@ class BlogPostModel(object):
         self.time_stamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M')
         self.author = form_data['author']
 
-    def ToDict(self):
+    def to_dict(self):
         return {'title': self.title, 'text': self.text, 'data': self.time_stamp, 'author': self.author}
 

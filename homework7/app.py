@@ -25,7 +25,7 @@ def home():
         form = BlogPostForm(request.form)
         if form.validate():
             model = BlogPostModel(form.data)
-            storage.add(model.ToDict())
+            storage.add(model.to_dict())
         else:
             logger.error('Someone have submitted an incorrect form!')
     else:
