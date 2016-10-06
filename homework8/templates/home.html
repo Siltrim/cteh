@@ -1,0 +1,15 @@
+Hello
+{% from "macros/render_field.html" import render_field %}
+<form method="POST" action="{{ url_for('home') }}">
+     {{ form.hidden_tag() }}
+         {% for field in form %}
+             {% if field.id != 'csrf_token' %}
+                 {{ render_field(field) }}
+             {% endif %}
+         {% endfor %}
+     <input type="submit" value="{{ 'Submit' }}" class="btn">
+</form>
+<br>
+{% if items != None %}
+    <a href="{{ items }}">your qr code</a>
+{% endif %}
