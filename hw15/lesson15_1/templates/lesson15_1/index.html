@@ -6,7 +6,6 @@
 </head>
 <body>
 <h1>test</h1>
-
     {% if messages %}
     <ul class="messages">
         {% for message in messages %}
@@ -18,9 +17,8 @@
     <form action="{% url 'form' %}" method="POST">
         {% csrf_token %}
         <ul>
-          <li>количество{{ form.quantity }}</li>
-          <li>товара{{ form.product }}</li>
-
+          <li>количество {{ form.quantity }}</li>
+          <li>товара {{ form.product }}</li>
         </ul>
         <input type="submit" value="Submit" >
     </form>
