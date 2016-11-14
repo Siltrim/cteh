@@ -18,6 +18,7 @@ def home():
             model = QrCodeModel(form.data)
             qrtext = pyqrcode.create(model.text)
             qr_file = 'qr_file.svg'
+
             qrtext.svg(qr_file, scale=8)
         else:
             pass
